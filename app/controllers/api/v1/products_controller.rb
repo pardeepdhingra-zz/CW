@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < BaseController
+class Api::V1::ProductsController < Api::V1::BaseController
   before_action :set_product, only: [:destroy, :update]
 
   def index
@@ -19,6 +19,10 @@ class Api::V1::ProductsController < BaseController
   end
 
   private
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
   def product_params
     params.require(:product).permit(:barcode, :name, :description, :purchase_date, :seller_name, :warranty_expire_date)
   end
