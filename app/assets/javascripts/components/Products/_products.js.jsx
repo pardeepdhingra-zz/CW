@@ -1,14 +1,6 @@
 var Products = React.createClass({
-  getInitialState() {
-    return {
-      products: []
-    }
-  },
-  componentDidMount() {
-    $.getJSON('/api/v1/products.json', (response) => { this.setState({ products: response }) });
-  },
   render() {
-    var products = this.state.products.map((product) => { return ( <Product key={product.id} product={product} /> ) });
+    var products = this.props.products.map((product) => { return ( <Product key={product.id} product={product} /> ) });
     return(
       <div className="table-responsive">
         <table className="table">
