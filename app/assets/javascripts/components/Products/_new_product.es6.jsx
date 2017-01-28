@@ -1,9 +1,10 @@
-var NewProduct = React.createClass({
-  getInitialState(){
-    return {
-      errors: {}
-    }
-  },
+class NewProduct extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {errors: {}};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick() {
     var barcode = this.refs.barcode.value;
     var name = this.refs.name.value;
@@ -33,7 +34,8 @@ var NewProduct = React.createClass({
         });
       }
     });
-  },
+  }
+
   render() {
     return (
       <div>
@@ -69,4 +71,4 @@ var NewProduct = React.createClass({
       </div>
     )
   }
-});
+}

@@ -1,16 +1,20 @@
-var Body = React.createClass({
-  getInitialState() {
-    return {
+class Body extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       products: []
     }
-  },
+  }
+
   componentDidMount() {
     $.getJSON('/api/v1/products.json', (response) => { this.setState({ products: response }) });
-  },
+  }
+
   handleSubmit(product) {
     var newState = this.state.products.concat(product);
     this.setState({ products: newState })
-  },
+  }
+
   render() {
     return (
       <div className="container">
@@ -28,4 +32,4 @@ var Body = React.createClass({
       </div>
     )
   }
-});
+}
